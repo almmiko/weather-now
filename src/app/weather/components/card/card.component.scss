@@ -1,0 +1,208 @@
+@import '~src/app/shared/styles/_variables.scss';
+@import '~src/app/shared/styles/_mixins.scss';
+
+.wrapper {
+  background-color: $main-color;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 25px 55px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $laptop)  {
+    padding: 25px 20px;
+  }
+
+  @media (max-width: $tablet)  {
+    margin-bottom: 20px;
+  }
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-info {
+  display: flex;
+  align-items: center;
+}
+
+.cart-weather-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-weather-icon {
+  margin-right: 20px;
+
+  svg {
+    width: 60px;
+    fill: $secondary-color;
+  }
+}
+
+.cart-show-hourly {
+  margin-top: 15px;
+}
+
+.show-hourly-weather-btn {
+  margin-right: 0;
+}
+
+.cart-weather-city {
+  @include fontSize(26px);
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $secondary-color;
+}
+
+.cart-weather-state {
+  @include fontSize(12px);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $secondary-color;
+}
+
+.cart-weather-condition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  .temperature {
+    @include fontSize(50px);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $secondary-color;
+
+    span {
+      @include fontSize(55px);
+    }
+  }
+
+  .wind-info {
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
+
+    .title {
+      font-weight: bold;
+      @include fontSize(12px);
+      text-transform: uppercase;
+    }
+
+    .condition {
+      font-weight: bold;
+      @include fontSize(13px);
+    }
+  }
+}
+
+.cart-big {
+  flex-grow: .8;
+
+  .cart-container {
+    flex-direction: row;
+  }
+
+  .show-hourly-weather-btn {
+    margin-left: 50px;
+  }
+
+  .cart-show-hourly {
+    margin-top: 0;
+  }
+
+  .cart-hourly-weather-wrapper {
+    margin-top: 0;
+    margin-left: 30px;
+    width: 350px;
+
+    @media (max-width: $laptop)  {
+      width: 280px;
+    }
+
+    @media (max-width: $mobile)  {
+      width: 240px;
+      margin-top: 20px;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: $laptop)  {
+    flex-grow: 0.3;
+  }
+
+  @media (max-width: $tablet)  {
+    flex-grow: initial;
+
+    .cart-container {
+      flex-direction: column;
+    }
+
+    .cart-show-hourly {
+      margin-top: 15px;
+    }
+
+    .show-hourly-weather-btn {
+      margin-left: 0;
+    }
+  }
+}
+
+.cart-hourly-weather-wrapper {
+  width: 240px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 20px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cart-hourly-weather {
+    flex: 0 0 auto;
+  }
+}
+
+.cart-hourly-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.cart-hourly-weather-time {
+  font-weight: bold;
+  margin-bottom: 5px;
+  @include fontSize(10px);
+  text-transform: uppercase;
+}
+
+.cart-hourly-weather-wind {
+  font-weight: 600;
+  @include fontSize(10px);
+}
+
+.cart-hourly-weather-icon {
+  margin-top: 5px;
+  svg {
+    width: 30px;
+    fill: $secondary-color;
+  }
+}
+
+.cart-hourly-weather-temperature {
+  @include fontSize(24px);
+  font-weight: normal;
+  text-transform: uppercase;
+}

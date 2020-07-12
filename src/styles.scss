@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~normalize.css';
+@import '~flexboxgrid';
+@import '~src/app/shared/styles/_variables.scss';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+
+  @media (max-width: $laptop)  {
+    font-size: 14px;
+  }
+
+  @media (max-width: $tablet)  {
+    font-size: 12px;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100%;
+  font-size: 100%;
+  color: $secondary-color;
+  background-color: $background-color;
+  font-family: $font-primary;
+  font-smooth: always;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
