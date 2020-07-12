@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { CityWeatherInfo } from '@weather/services/weather.types';
 
 @Component({
@@ -7,17 +7,14 @@ import { CityWeatherInfo } from '@weather/services/weather.types';
   styleUrls: ['./card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input() weather: CityWeatherInfo;
 
-  constructor() { }
+  isHourlyForecastShown = false;
 
-  ngOnInit(): void {
-  }
-
-  onClickReceived(): void {
-    console.log('click');
+  showHourlyForecast(): void {
+    this.isHourlyForecastShown = true;
   }
 
   trackByFn(index, item): string {

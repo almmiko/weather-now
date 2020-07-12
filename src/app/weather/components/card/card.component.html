@@ -16,13 +16,13 @@
         </div>
       </div>
     </div>
-<!--    <div class="cart-show-hourly">-->
-<!--      <app-button-->
-<!--        [config]="{text: 'Show Hourly Weather Forecast'}"-->
-<!--        (buttonClickEvent)="onClickReceived()"-->
-<!--        class="show-hourly-weather-btn"></app-button>-->
-<!--    </div>-->
-    <div class="cart-hourly-weather-wrapper">
+    <div *ngIf="!isHourlyForecastShown" class="cart-show-hourly">
+      <app-button
+        [config]="{text: 'Show Hourly Weather Forecast'}"
+        (buttonClickEvent)="showHourlyForecast()"
+        class="show-hourly-weather-btn"></app-button>
+    </div>
+    <div *ngIf="isHourlyForecastShown" class="cart-hourly-weather-wrapper">
       <div
         *ngFor="let hourly of weather.hourly; trackBy: trackByFn; let first = first;"
         class="cart-hourly-weather">
