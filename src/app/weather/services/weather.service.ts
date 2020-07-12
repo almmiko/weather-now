@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { forkJoin, Observable } from 'rxjs';
+import { CityWeatherInfo } from '@weather/services/weather.types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,12 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  fetchWeather(): Observable<any> {
-    const n = this.http.get(`${environment.weatherAPIUrl}?lat=52.3667&lon=4.8945&exclude=daily, minutely&appid=${environment.weatherAPPID}&units=metric`);
-    const n1 = this.http.get(`${environment.weatherAPIUrl}?lat=48.8566&lon=2.3522&exclude=daily, minutely&appid=${environment.weatherAPPID}&units=metric`);
+  fetchWeather(): Observable<CityWeatherInfo[]> {
+    const { citiesCoordinate, weatherAPIUrl, weatherAPPID } = environment;
 
-    return forkJoin([n, n1]);
+    const observables = citiesCoordinate.map(coordinate =>
+      this.http.get(`${weatherAPIUrl}?lat=${coordinate.lat}&lon=${coordinate.lon}&exclude=daily, minutely&appid=${weatherAPPID}&units=metric`));
+
+    return forkJoin(observables) as Observable<CityWeatherInfo[]>;
   }
 }

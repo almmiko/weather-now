@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '@weather/services/weather.service';
+import { map } from 'rxjs/operators';
+import { CityWeatherInfo } from '@weather/services/weather.types';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherComponent implements OnInit {
 
-  constructor() { }
+  weatherData$: Observable<CityWeatherInfo[]>;
 
-  ngOnInit(): void {
+  constructor(private weatherService: WeatherService) {
+    this.weatherData$ = weatherService.fetchWeather().pipe(map(weather => weather));
   }
 
+  ngOnInit(): void {}
+
+  trackByFn(index, item): string {
+    return item.timezone;
+  }
 }

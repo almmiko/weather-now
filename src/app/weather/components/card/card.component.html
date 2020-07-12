@@ -2,112 +2,37 @@
   <div class="cart-container">
     <div class="cart-info">
       <div class="cart-weather-icon">
-        <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
+        <svg-icon src="assets/icons/{{ weather.current.weather[0].icon | iconMapper }}.svg"></svg-icon>
       </div>
       <div class="cart-weather-info">
-        <div class="cart-weather-city">Amsterdam</div>
-        <div class="cart-weather-state">Clear / clear sky</div>
+        <div class="cart-weather-city">{{ weather.timezone | cityName }}</div>
+        <div class="cart-weather-state">{{ weather.current.weather[0].description}}</div>
         <div class="cart-weather-condition">
-          <div class="temperature">21<span>&deg;</span></div>
+          <div class="temperature">{{ weather.current.temp | number: '1.0-0' }}<span>&deg;</span></div>
           <div class="wind-info">
             <span class="title">wind</span>
-            <span class="condition">w 16 km/hr</span>
+            <span class="condition">{{ weather.current.wind_deg | degToCompass }} {{ weather.current.wind_speed | number: '1.0-0' }} m/sec</span>
           </div>
         </div>
       </div>
     </div>
 <!--    <div class="cart-show-hourly">-->
-<!--      <app-button class="show-hourly-weather-btn"></app-button>-->
+<!--      <app-button-->
+<!--        [config]="{text: 'Show Hourly Weather Forecast'}"-->
+<!--        (buttonClickEvent)="onClickReceived()"-->
+<!--        class="show-hourly-weather-btn"></app-button>-->
 <!--    </div>-->
-
-
     <div class="cart-hourly-weather-wrapper">
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
+      <div
+        *ngFor="let hourly of weather.hourly; trackBy: trackByFn; let first = first;"
+        class="cart-hourly-weather">
+        <div class="cart-hourly-weather-time">{{ first ? 'NOW' : hourly.dt * 1000 | date: 'H:mm'}}</div>
+        <div class="cart-hourly-weather-wind">{{ hourly.wind_deg | degToCompass }} {{ hourly.wind_speed | number: '1.0-0' }} m/sec</div>
         <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
+          <svg-icon src="assets/icons/{{ hourly.weather[0].icon | iconMapper }}.svg"></svg-icon>
         </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
-      </div>
-      <div class="cart-hourly-weather">
-        <div class="cart-hourly-weather-time">now</div>
-        <div class="cart-hourly-weather-wind">w 16 km/hr</div>
-        <div class="cart-hourly-weather-icon">
-          <svg-icon src="assets/icons/sunny-day.svg"></svg-icon>
-        </div>
-        <div class="cart-hourly-weather-temperature">21<span>&deg;</span></div>
+        <div class="cart-hourly-weather-temperature">{{ hourly.temp | number: '1.0-0'}}<span>&deg;</span></div>
       </div>
     </div>
-
-
-
-
-
-
   </div>
 </div>
