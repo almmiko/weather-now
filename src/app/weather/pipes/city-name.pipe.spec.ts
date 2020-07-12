@@ -1,8 +1,14 @@
 import { CityNamePipe } from './city-name.pipe';
 
 describe('CityNamePipe', () => {
-  it('create an instance', () => {
-    const pipe = new CityNamePipe();
-    expect(pipe).toBeTruthy();
+  let pipe: CityNamePipe;
+
+  beforeEach(() => {
+    pipe = new CityNamePipe();
+  });
+
+  it('should return city name', () => {
+    expect(pipe.transform('test/test')).toBe('test');
+    expect(pipe.transform('')).toBeUndefined();
   });
 });

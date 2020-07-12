@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 type Config = {
   text: string;
-  styles?: object;
 };
 
 @Component({
@@ -11,7 +10,9 @@ type Config = {
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
-  @Input() config: Config;
+  @Input() config: Config = {
+    text: '',
+  };
   @Output() buttonClickEvent = new EventEmitter();
 
   onClick(): void {

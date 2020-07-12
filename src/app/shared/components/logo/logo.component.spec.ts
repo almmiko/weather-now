@@ -22,4 +22,17 @@ describe('LogoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have logo image', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const image = compiled.querySelector('img');
+
+    expect(image.src).toContain('/assets/logo.svg');
+    expect(compiled).toBeTruthy();
+  });
+
+  it('should have alt text', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('img').alt).toContain('weather-now');
+  });
 });

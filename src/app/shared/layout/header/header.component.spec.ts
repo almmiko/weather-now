@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { HeaderComponent } from '@shared/layout';
+import { LogoComponent } from '@shared/components';
+import { By } from '@angular/platform-browser';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +10,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent, LogoComponent ]
     })
     .compileComponents();
   }));
@@ -21,5 +23,10 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have logo component', () => {
+    const compiled = fixture.debugElement;
+    expect(compiled.query(By.css('app-logo'))).toBeTruthy();
   });
 });
