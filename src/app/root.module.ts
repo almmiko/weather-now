@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { RootComponent } from './root.component';
 import { CoreModule } from '@core/core.module';
 import { LayoutModule } from '@shared/layout/layout.module';
 import { WeatherModule } from '@weather/weather.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    RootComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +17,6 @@ import { WeatherModule } from '@weather/weather.module';
     LayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [RootComponent]
 })
-export class AppModule { }
+export class RootModule { }

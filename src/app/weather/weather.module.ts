@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WeatherComponent } from './weather.component';
 import { SharedModule } from '@shared/shared.module';
-import { CardComponent } from './components/card/card.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { CityNamePipe } from './pipes/city-name.pipe';
-import { DegToCompassPipe } from './pipes/deg-to-compass.pipe';
-import { IconMapperPipe } from './pipes/icon-mapper.pipe';
+import * as weatherPipes from '@weather/pipes';
+import * as weatherComponents from '@weather/components';
 
 @NgModule({
-  declarations: [WeatherComponent, CardComponent, CityNamePipe, DegToCompassPipe, IconMapperPipe],
+  declarations: [...weatherComponents.components, ...weatherPipes.pipes],
   exports: [
-    WeatherComponent,
+    weatherComponents.WeatherComponent,
   ],
   imports: [
     CommonModule,

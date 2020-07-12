@@ -9,15 +9,13 @@ import { Observable } from 'rxjs';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-export class WeatherComponent implements OnInit {
+export class WeatherComponent {
 
   weatherData$: Observable<CityWeatherInfo[]>;
 
   constructor(private weatherService: WeatherService) {
     this.weatherData$ = weatherService.fetchWeather().pipe(map(weather => weather));
   }
-
-  ngOnInit(): void {}
 
   trackByFn(index, item): string {
     return item.timezone;

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
-import { components } from '@shared/layout';
+import * as layoutComponents from '@shared//layout';
 
 @NgModule({
   declarations: [
-    ...components,
+    ...layoutComponents.components,
   ],
   exports: [
-    ...components,
+    ...layoutComponents.components,
   ],
   imports: [
     CommonModule,
