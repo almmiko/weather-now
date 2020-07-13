@@ -1,6 +1,6 @@
-import { config } from '@env/config';
+import { Config, config } from '@env/config';
 
-export const environment = {
+export const environment: Config = {
   ...config,
 
   production: true

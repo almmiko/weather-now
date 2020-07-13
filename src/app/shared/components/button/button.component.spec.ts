@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonComponent } from './button.component';
 import { By } from '@angular/platform-browser';
@@ -31,11 +31,9 @@ describe('ButtonComponent', () => {
     expect(compiled.query(By.css('button')).nativeElement.innerText).toBe('TEST BUTTON');
   });
 
-  it('should have onClick method', fakeAsync(() => {
+  it('should have onClick method', () => {
     spyOn(component, 'onClick');
-
     fixture.debugElement.nativeElement.querySelector('button').click();
-    tick();
     expect(component.onClick).toHaveBeenCalled();
-  }));
+  });
 });

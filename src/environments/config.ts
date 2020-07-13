@@ -1,4 +1,14 @@
-export const config = {
+export interface Config {
+  production: boolean;
+  weatherAPIUrl: string;
+  weatherAPPID: string;
+  citiesCoordinate: {
+    lat: number;
+    lon: number;
+  }[];
+}
+
+export const config: Config = {
   production: false,
   weatherAPIUrl: 'https://api.openweathermap.org/data/2.5/onecall',
   weatherAPPID: '4e3855b13f89dcf9e98ede6a07e583be', // this value should be taken from CI variable

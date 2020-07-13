@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { WeatherService } from '@weather/services/weather.service';
-import { map } from 'rxjs/operators';
 import { CityWeatherInfo } from '@weather/services/weather.types';
 import { Observable } from 'rxjs';
 
@@ -14,7 +13,7 @@ export class WeatherComponent {
   weatherData$: Observable<CityWeatherInfo[]>;
 
   constructor(private weatherService: WeatherService) {
-    this.weatherData$ = weatherService.fetchWeather().pipe(map(weather => weather));
+    this.weatherData$ = weatherService.fetchWeather();
   }
 
   trackByFn(index, item): string {
