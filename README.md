@@ -1,27 +1,60 @@
-# WeatherNow
+# Weather Now
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+> Project built using [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2 and node v12.18.2.
 
-## Development server
+## Installing
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+$ npm install 
+```
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
+
+# Project structure
+
+```
+e2e/                         end-to-end tests
+src/                         project source code
+|- app/                      app components
+|  |- __fixtures__           fixture files
+|  |- __mocks__              mock files 
+|  |- core/                  core modules (singeltons)
+|  |- shared/                shared module (common components, layout, styles and utils)
+|  |- weather/               weather feature module (components, pipes, services)
+|  |- root.component.*       app root component and styles
+|  |- root.module.ts         app root module definition
+|- assets/                   app assets (images, fonts)
+|- environments/             values for various build environments (test, prod)
+|- index.html                html entry point
+|- main.scss                 global style entry point
+|- main.ts                   app entry point
+|- polyfills.ts              polyfills needed by Angular
+|- test.ts                   unit tests entry point
++- ...config files           tsconfig, DockerFile and additional configuration files
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build-prod` to build the production version.
+
+Run `npm run build-dev` to build the dev version.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run test` to execute the unit tests.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run e2e` to execute the end-to-end tests.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Docker 
+
+```
+// Build docker image
+$ docker build -t weather-now/client .
+$ docker run -p 9090:80 weather-now/client
+```
+
