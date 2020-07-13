@@ -1,16 +1,11 @@
-import { AppPage } from './app.po';
+import { RootPage } from './app.po';
 import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+describe('weather-now root view', () => {
+  let page: RootPage;
 
   beforeEach(() => {
-    page = new AppPage();
-  });
-
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('weather-now app is running!');
+    page = new RootPage();
   });
 
   afterEach(async () => {
@@ -19,5 +14,22 @@ describe('workspace-project App', () => {
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,
     } as logging.Entry));
+  });
+
+  it('should display logo', () => {
+    page.navigateTo();
+    expect(page.getLogo().isDisplayed()).toBeTruthy();
+  });
+
+  it('should display 5 weather carts',() => {
+    page.navigateTo();
+    expect(page.getCards().count()).toBe(5);
+  });
+
+  it('should open hourly weather forecast', () => {
+    page.navigateTo();
+    page.getCardButton().click();
+
+    expect(page.getHourlyWeatherContainer().isDisplayed()).toBeTruthy();
   });
 });

@@ -1,11 +1,26 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementArrayFinder, ElementFinder } from 'protractor';
 
-export class AppPage {
+export class RootPage {
+
+  rootSelector = 'app-weather-now-root';
+
   navigateTo(): Promise<unknown> {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
 
-  getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  getLogo(): ElementFinder {
+    return element(by.css(`${this.rootSelector} app-logo`));
+  }
+
+  getCards(): ElementArrayFinder {
+    return element.all(by.css(`${this.rootSelector} app-card`));
+  }
+
+  getCardButton(): ElementFinder {
+    return element(by.css(`${this.rootSelector} app-button`));
+  }
+
+  getHourlyWeatherContainer(): ElementFinder {
+    return element(by.css(`${this.rootSelector} .cart-hourly-weather-wrapper`));
   }
 }
