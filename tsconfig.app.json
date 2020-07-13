@@ -11,5 +11,9 @@
   ],
   "include": [
     "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "src/app/__fixtures__/**",
+    "src/app/__mocks__/**"
   ]
 }

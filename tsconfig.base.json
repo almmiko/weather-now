@@ -20,7 +20,9 @@
       "@core/*": ["src/app/core/*"],
       "@shared/*": ["src/app/shared/*"],
       "@weather/*": ["src/app/weather/*"],
-      "@env/*": ["src/environments/*"]
+      "@env/*": ["src/environments/*"],
+      "@fixtures/*": ["src/app/__fixtures__/*"],
+      "@mocks/*": ["src/app/__mocks__/*"]
     }
   }
 }
