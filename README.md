@@ -2,6 +2,9 @@
 
 > Project built using [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2 and node v12.18.2.
 
+## Live Preview 
+[Visit deployed demo](http://weather-now-demo-v1.s3-website.eu-central-1.amazonaws.com/)
+
 ## Installing
 
 ```
@@ -16,6 +19,7 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ```
 e2e/                         end-to-end tests
+media/                       media files (screenshots) 
 src/                         project source code
 |- app/                      app components
 |  |- __fixtures__           fixture files
