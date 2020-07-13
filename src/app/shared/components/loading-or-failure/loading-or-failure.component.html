@@ -1,0 +1,8 @@
+<ng-template #template>
+  <div class="error" *ngIf="dataResolver.error$ | async; else loading">
+    {{ errorMessage }}
+  </div>
+  <ng-template #loading>
+    {{ loadingMessage }}
+  </ng-template>
+</ng-template>

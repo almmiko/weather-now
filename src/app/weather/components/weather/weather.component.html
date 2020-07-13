@@ -1,9 +1,16 @@
 <div class="container">
-  <div class="row">
+  <div *ngIf="weatherData.data$ | async as citiesWeather; else loadingOrFailure.template" class="row">
     <app-card
-      *ngFor="let weather of weatherData$ | async; trackBy: trackByFn; let first = first;"
+      *ngFor="let weather of citiesWeather; trackBy: trackByFn; let first = first;"
       [weather]="weather"
       [ngClass]="first ? 'cart cart-big col-xs col-lg-8 col-md-8 col-sm-12 col-xs-12' : 'cart col-xs'"
     ></app-card>
   </div>
 </div>
+
+<app-loading-or-failure
+  #loadingOrFailure
+  [dataResolver]="weatherData"
+  [errorMessage]="'Weather is not available'"
+  [loadingMessage]="''"
+></app-loading-or-failure>

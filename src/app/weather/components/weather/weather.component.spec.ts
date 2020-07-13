@@ -35,8 +35,8 @@ describe('WeatherComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component.weatherData$).toBeInstanceOf(Observable);
+  it('should call weatherData', () => {
+    expect(component.weatherData.data$).toBeInstanceOf(Observable);
     expect(fetchWeatherSpy).toHaveBeenCalled();
     expect(fetchWeatherSpy).toHaveBeenCalledTimes(1);
   });

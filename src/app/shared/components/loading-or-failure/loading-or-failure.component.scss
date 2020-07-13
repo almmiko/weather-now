@@ -1,0 +1,7 @@
+@import '~src/app/shared/styles/_mixins.scss';
+
+.error {
+  text-align: center;
+  text-transform: uppercase;
+  @include fontSize(25px);
+}
