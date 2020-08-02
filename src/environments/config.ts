@@ -11,7 +11,7 @@ export interface Config {
 export const config: Config = {
   production: false,
   weatherAPIUrl: 'https://api.openweathermap.org/data/2.5/onecall',
-  weatherAPPID: '4e3855b13f89dcf9e98ede6a07e583be', // this value should be taken from CI variable
+  weatherAPPID: '', // this value should be taken from CI variable
 
   citiesCoordinate: [
     {
